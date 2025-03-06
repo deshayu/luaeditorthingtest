@@ -2,7 +2,7 @@
 let editor;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the Ace Editor for a given editor div
+    // Initialize the Ace Editor for the given editor div
     const initializeEditor = (editorDiv) => {
         editor = ace.edit(editorDiv); // Store the editor instance globally
         editor.setTheme('ace/theme/monokai');
@@ -13,12 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         editor.session.setUseWrapMode(true);
     };
 
-    // Set the callback for initializing the editor in TabsModule
-    TabsModule.setInitializeEditorCallback(initializeEditor);
-
-    // Ensure the first tab has an editor
-    const firstTab = TabsModule.getTab(TabsModule.getCurrentTabId());
-    if (firstTab) {
-        firstTab.editor = initializeEditor(firstTab.editorDiv);
+    // Find the editor container (the div with id 'editor')
+    const editorDiv = document.getElementById('editor');
+    if (editorDiv) {
+        // Initialize the Ace editor directly inside this div
+        initializeEditor(editorDiv);
     }
 });

@@ -1,17 +1,21 @@
-// patterns/setTopBottomPattern.js
 export function parse(code) {
-    const setTopBottomPattern = /setTopBottom\(([^,]+), ([^,]+), ([^,]+), ([^,]+)\)/;
-    const match = code.match(setTopBottomPattern);
+    const regex = /([a-zA-Z0-9_]+):setTopBottom\((true|false), (true|false), (-?\d+), (-?\d+)\)/g;
+    let match;
+    const elements = [];
 
-    if (match) {
-        return {
+    while ((match = regex.exec(code)) !== null) {
+        const [, objectName, anchorTop, anchorBottom, min, max] = match;
+
+        elements.push({
+            objectName,
             topBottom: {
-                anchorTop: match[1].trim() === 'true',    // Convert to boolean
-                anchorBottom: match[2].trim() === 'true', // Convert to boolean
-                min: parseFloat(match[3]),
-                max: parseFloat(match[4]),
+                anchorTop: anchorTop === "true",
+                anchorBottom: anchorBottom === "true",
+                min: parseInt(min, 10),
+                max: parseInt(max, 10),
             },
-        };
+        });
     }
-    return null; // Return null if no match is found
+
+    return elements.length > 0 ? { elements } : null;
 }

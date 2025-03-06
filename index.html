@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/display.css">
     <link rel="stylesheet" href="styles/fullscreen.css">
-    <link rel="stylesheet" href="styles/tabs.css">
 </head>
 <body>
     <div class="container">
@@ -23,13 +22,7 @@
             </header>
 
             <div class="panel-content">
-                <!-- Tabs for multi-tab editor -->
-                <div id="tabs-container">
-                    <button id="new-tab-btn">+</button>
-                </div>
-
-                <!-- Container for editors -->
-                <div id="editor-container"></div>
+                <div id="editor"></div> <!-- Editor div directly here -->
             </div>
         </section>
 
@@ -57,7 +50,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.0/theme-monokai.min.js"></script>
 
     <!-- Custom JS (Defer loading) -->
-    <script src="scripts/editor/tabs.js" defer></script>
     <script src="scripts/editor.js" defer></script>
     <script src="scripts/parser/parser.js" defer></script>
     <script src="scripts/divider.js" defer></script>

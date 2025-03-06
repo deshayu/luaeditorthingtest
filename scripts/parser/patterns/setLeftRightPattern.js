@@ -1,17 +1,21 @@
-// patterns/setLeftRightPattern.js
 export function parse(code) {
-    const setLeftRightPattern = /setLeftRight\(([^,]+), ([^,]+), ([^,]+), ([^,]+)\)/;
-    const match = code.match(setLeftRightPattern);
+    const regex = /([a-zA-Z0-9_]+):setLeftRight\((true|false), (true|false), (-?\d+), (-?\d+)\)/g;
+    let match;
+    const elements = [];
 
-    if (match) {
-        return {
+    while ((match = regex.exec(code)) !== null) {
+        const [, objectName, anchorLeft, anchorRight, min, max] = match;
+
+        elements.push({
+            objectName,
             leftRight: {
-                anchorLeft: match[1].trim() === 'true',  // Convert to boolean
-                anchorRight: match[2].trim() === 'true', // Convert to boolean
-                min: parseFloat(match[3]),
-                max: parseFloat(match[4]),
+                anchorLeft: anchorLeft === "true",
+                anchorRight: anchorRight === "true",
+                min: parseInt(min, 10),
+                max: parseInt(max, 10),
             },
-        };
+        });
     }
-    return null; // Return null if no match is found
+
+    return elements.length > 0 ? { elements } : null;
 }

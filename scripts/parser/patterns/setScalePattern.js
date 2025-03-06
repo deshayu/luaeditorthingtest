@@ -1,12 +1,16 @@
-// patterns/setScalePattern.js
 export function parse(code) {
-    const setScalePattern = /setScale\(([^)]+)\)/;
-    const match = code.match(setScalePattern);
+    const regex = /([a-zA-Z0-9_]+):setScale\((\d+(\.\d+)?)\)/g;
+    let match;
+    const elements = [];
 
-    if (match) {
-        return {
-            scale: parseFloat(match[1]),
-        };
+    while ((match = regex.exec(code)) !== null) {
+        const [, objectName, scale] = match;
+
+        elements.push({
+            objectName,
+            scale: parseFloat(scale),
+        });
     }
-    return null; // Return null if no match is found
+
+    return elements.length > 0 ? { elements } : null;
 }
