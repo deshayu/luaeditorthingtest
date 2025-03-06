@@ -1,0 +1,69 @@
+/* ===== Tabs Container ===== */
+#tabs-container {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-color: #1e1e1e;
+    border-bottom: 2px solid #444;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* ===== Tabs ===== */
+.tab {
+    background: none;
+    color: #d4d4d4;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    transition: color 0.2s ease, background 0.2s ease;
+    font-size: 14px;
+}
+
+.tab:hover {
+    color: #fff;
+}
+
+.tab.active {
+    color: #fff;
+    font-weight: bold;
+    background-color: #007acc;
+}
+
+/* ===== New Tab Button ===== */
+#new-tab-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 14px;
+}
+
+#new-tab-btn:hover {
+    background: #005fa3;
+}
+
+/* ===== Close Tab Button ===== */
+.close-tab {
+    font-size: 14px;
+    color: #d4d4d4;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
+}
+
+.tab:hover .close-tab,
+.tab.active .close-tab {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.close-tab:hover {
+    color: #f44336;
+}

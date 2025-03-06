@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Lua code editor for visualizing Call of Duty HUD elements.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>COD Lua HUD Visualizer</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/display.css">
+    <link rel="stylesheet" href="styles/fullscreen.css">
+    <link rel="stylesheet" href="styles/tabs.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Editor Panel -->
+        <section class="panel editor-panel">
+            <header class="panel-header">
+                <h1>CoD Lua Editor</h1>
+                <button id="toggleFullscreenEditor" class="fullscreen-toggle" aria-label="Toggle Fullscreen for Editor">⤢</button>
+            </header>
+
+            <div class="panel-content">
+                <!-- Tabs for multi-tab editor -->
+                <div id="tabs-container">
+                    <button id="new-tab-btn">+</button>
+                </div>
+
+                <!-- Container for editors -->
+                <div id="editor-container"></div>
+            </div>
+        </section>
+
+        <!-- Divider for resizing -->
+        <div id="divider" class="divider"></div>
+
+        <!-- Display Panel -->
+        <section class="panel display-panel">
+            <header class="panel-header">
+                <h1>HUD Display</h1>
+                <button id="toggleFullscreenDisplay" class="fullscreen-toggle" aria-label="Toggle Fullscreen for HUD Display">⤢</button>
+            </header>
+            <div class="panel-content">
+                <!-- HUD Canvas Wrapper -->
+                <div id="canvas-container">
+                    <canvas id="hud-canvas" width="1920" height="1080"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- External JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.0/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.0/mode-lua.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.0/theme-monokai.min.js"></script>
+
+    <!-- Custom JS (Defer loading) -->
+    <script src="scripts/editor/tabs.js" defer></script>
+    <script src="scripts/editor.js" defer></script>
+    <script src="scripts/parser/parser.js" defer></script>
+    <script src="scripts/divider.js" defer></script>
+    <script src="scripts/fullscreen.js" defer></script>
+    <script src="scripts/guidelines.js" defer></script>
+</body>
+</html>

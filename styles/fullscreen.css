@@ -1,0 +1,16 @@
+/* Fullscreen and Hidden States */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1000;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.hidden {
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Hide without breaking layout */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-out */
+}
